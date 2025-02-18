@@ -60,11 +60,11 @@
 	},
 	"sources": {
 		"prog2005-2025/lab01/task1/HelloName.sol": {
-			"keccak256": "0x1def03aa81c4641c73fda079d07184ea5c3bf2567628b6f22689222974a2288d",
+			"keccak256": "0x3f686a333ecda81b37230fd043cf2e37f9b394c1af824843db29791e4d57bada",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2448d5995d9377130be89448683f0d663eebcc66aa839168aaa6c91cef914ad5",
-				"dweb:/ipfs/QmXZYUJuPVMxCzJ8eeArcpBzEmRPZrVuHqAcBuU2AE8Yn9"
+				"bzz-raw://0aa2b5a75def08a855ab76b5e1b01bd175b89bb419edc6bdf1eb0354eb823952",
+				"dweb:/ipfs/QmTyobP1fLC4wtzjXfH2h93im46uB6g3cDS4L8fqujXsVM"
 			]
 		}
 	},

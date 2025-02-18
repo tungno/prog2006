@@ -83,7 +83,7 @@ contract RockPaperScissors {
         // Otherwise, if player1 exists but player2 is not set, then msg.sender becomes player2.
         else {
             require(player2 == address(0), "Game already has two players");
-            require(msg.sender != player1, "Cannot play against yourself");
+            require(msg.sender != player1, "Cannot play against yourself"); 
             require(msg.value == bet, "Stake must match player1's stake");
             
             player2 = msg.sender;
@@ -260,3 +260,5 @@ contract RockPaperScissors {
     // Fallback function to receive funds (if necessary).
     receive() external payable {}
 }
+
+

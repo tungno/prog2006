@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "ReentrancyGuardReentrantCall",
+				"type": "error"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"prog2005-2025/lab02/gitlab-fund/contracts/libraries/SecurityUtils.sol": "SecurityUtils"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"prog2005-2025/lab02/gitlab-fund/contracts/libraries/SecurityUtils.sol": {
+			"keccak256": "0x00f9ee3be304f9aa373da8a628b843c661f9c1584a8a6af06a8fa3eb43adc410",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb78fac247cb575b7c3ebb9f2fb66d2ed47a2f37067e77a4b3de5904b24a751d",
+				"dweb:/ipfs/QmcB3tbmkURfMRGEooUzaN2rqKFLvCNDv7VRMANTEVtS24"
+			]
+		}
+	},
+	"version": 1
+}

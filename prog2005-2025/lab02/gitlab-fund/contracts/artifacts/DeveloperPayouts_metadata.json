@@ -1,0 +1,379 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_fundManager",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_validatorMultiSig",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
+					}
+				],
+				"name": "BountyClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
+					}
+				],
+				"name": "ClaimCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "PayoutProcessed",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "CLAIM_TIMEOUT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "cancelClaim",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "claimBounty",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "claimTimestamps",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "claims",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "paid",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "fundManager",
+				"outputs": [
+					{
+						"internalType": "contract IFundManager",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "getClaimStatus",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "claimed",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "isClaimExpired",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "processPayout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "validatorMultiSig",
+				"outputs": [
+					{
+						"internalType": "contract IValidatorMultiSig",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"cancelClaim(uint256)": {
+					"details": "Cancel a claim (can be called by the original claimer or automatically after timeout)",
+					"params": {
+						"issueId": "The GitLab issue ID"
+					}
+				},
+				"claimBounty(uint256)": {
+					"details": "Developer claims a bounty for an issue",
+					"params": {
+						"issueId": "The GitLab issue ID"
+					}
+				},
+				"getClaimStatus(uint256)": {
+					"details": "Get the current status of a claim",
+					"params": {
+						"issueId": "The GitLab issue ID"
+					},
+					"returns": {
+						"amount": "The bounty amount",
+						"claimed": "Whether the bounty has been claimed",
+						"developer": "The address of the developer who claimed"
+					}
+				},
+				"isClaimExpired(uint256)": {
+					"details": "Check if a claim has expired",
+					"params": {
+						"issueId": "The GitLab issue ID"
+					},
+					"returns": {
+						"_0": "bool Whether the claim has expired"
+					}
+				},
+				"processPayout(uint256)": {
+					"details": "Process payout for a claimed bounty after validator approval",
+					"params": {
+						"issueId": "The GitLab issue ID"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"prog2005-2025/lab02/gitlab-fund/contracts/DeveloperPayouts.sol": "DeveloperPayouts"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"prog2005-2025/lab02/gitlab-fund/contracts/DeveloperPayouts.sol": {
+			"keccak256": "0xdbd27a1f86e009ed3ddf19b4798ae027b5bcd5726d01bc9124a77c3b31c1b690",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6eed27aec92bb34331a6b4dc03d2037b25bd4d015b6cad010162d49df29347e7",
+				"dweb:/ipfs/QmbZchB4RCxnheKLBsP1aRtP9riw2uRLYuYM8yFsi4xvCV"
+			]
+		},
+		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IDeveloperPayouts.sol": {
+			"keccak256": "0xafb64f121d01507729cd8bac5a59915ce1ea01b8d1bf7efc2bd17878591e23ad",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://175ef38934a8ac3d137ed21f944fa71ef4430060baa769eaae0520d83f866737",
+				"dweb:/ipfs/QmYDHx4pzAsY6hSrmXPzQS41jkJSE9JZSA3RPTwzMXKvH1"
+			]
+		},
+		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IFundManager.sol": {
+			"keccak256": "0x3e5a4229565198f147cfe18eef8e83250491795b14ac418f4344bc6f9c967f72",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://da32d8961d0fca33b0a7a4923619c1775a1f5113723a4ce118ce2ea71085e68e",
+				"dweb:/ipfs/QmURrxtZxxUynVHz4hLiNQK3M2Qcd6XsiqqV1Fs7jtG9FX"
+			]
+		},
+		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IValidatorMultiSig.sol": {
+			"keccak256": "0xe6a2cff08457ffb57b2a36ee8d7c81f6fb6eeeae8a55492e70b535a658ca2dc1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://daf781f4febf8a573738526d0be656910924010d159cfcda23d7eec97028c198",
+				"dweb:/ipfs/QmcfmqaTpLNtjvN4sEmUTbsEgUQwJbvRQLeobs8fbJxNcw"
+			]
+		},
+		"prog2005-2025/lab02/gitlab-fund/contracts/libraries/SecurityUtils.sol": {
+			"keccak256": "0x00f9ee3be304f9aa373da8a628b843c661f9c1584a8a6af06a8fa3eb43adc410",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb78fac247cb575b7c3ebb9f2fb66d2ed47a2f37067e77a4b3de5904b24a751d",
+				"dweb:/ipfs/QmcB3tbmkURfMRGEooUzaN2rqKFLvCNDv7VRMANTEVtS24"
+			]
+		}
+	},
+	"version": 1
+}

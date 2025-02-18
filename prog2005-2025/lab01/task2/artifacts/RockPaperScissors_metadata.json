@@ -334,11 +334,11 @@
 	},
 	"sources": {
 		"prog2005-2025/lab01/task2/RockPapirScissors.sol": {
-			"keccak256": "0x1625c632db60efd7eaa6fa6f6fd0d4ca787e51e257e5fd7bb95ee3179ae2c3df",
+			"keccak256": "0x7571cad1880ca8ad264a46f8b1a3915c5a85951452e1c080ce6ac701ec31fb5d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2bc8572dc6dc14b4e0dbf7891e0b5fee91117571306751cf1ba37ee65e6f889d",
-				"dweb:/ipfs/QmVFok9s3yYnXkgsnWMDe7Meeq41cWV2qZJVx6ZsRxzVrG"
+				"bzz-raw://2235b0624367ee60c0ac6113f2640097164553e81d7bccdedd36ccc5b85bf105",
+				"dweb:/ipfs/QmYonfeSoZWSDftUQFrgrDC4TTxfRUhYbfpViE4xNGgGC6"
 			]
 		}
 	},
