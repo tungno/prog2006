@@ -51,6 +51,7 @@
 		"methodIdentifiers": {
 			"cancelClaim(uint256)": "9dc5e02f",
 			"claimBounty(uint256)": "44021ad7",
+			"fundManager()": "6209ec2d",
 			"getClaimStatus(uint256)": "36dbd2f9",
 			"processPayout(uint256)": "89ee68bf"
 		}
@@ -143,6 +144,19 @@
 			"name": "claimBounty",
 			"outputs": [],
 			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "fundManager",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
 			"type": "function"
 		},
 		{

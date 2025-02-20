@@ -6,7 +6,7 @@ interface IValidatorMultiSig {
     event ValidatorAdded(address indexed validator);
     event ValidatorRemoved(address indexed validator);
     event PayoutApproved(uint256 indexed issueId, address indexed developer);
-    event ThresholdChanged(uint256 newThreshold);
+     event ApprovalRevoked(uint256 indexed issueId, address indexed developer);
 
     // Functions
     function addValidator(address validator) external;

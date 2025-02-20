@@ -12,4 +12,5 @@ interface IDeveloperPayouts {
     function processPayout(uint256 issueId) external;
     function cancelClaim(uint256 issueId) external;
     function getClaimStatus(uint256 issueId) external view returns (bool claimed, address developer, uint256 amount);
+     function fundManager() external view returns (address);
 }

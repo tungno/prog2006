@@ -21,20 +21,26 @@
 						"type": "address"
 					}
 				],
-				"name": "PayoutApproved",
+				"name": "ApprovalRevoked",
 				"type": "event"
 			},
 			{
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
-						"name": "newThreshold",
+						"name": "issueId",
 						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "developer",
+						"type": "address"
 					}
 				],
-				"name": "ThresholdChanged",
+				"name": "PayoutApproved",
 				"type": "event"
 			},
 			{
@@ -215,11 +221,11 @@
 	},
 	"sources": {
 		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IValidatorMultiSig.sol": {
-			"keccak256": "0xe6a2cff08457ffb57b2a36ee8d7c81f6fb6eeeae8a55492e70b535a658ca2dc1",
+			"keccak256": "0x150830cb730b27ff8b2fd12540e1f84b120df5c754839375a7fb8b8a159d3dc1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://daf781f4febf8a573738526d0be656910924010d159cfcda23d7eec97028c198",
-				"dweb:/ipfs/QmcfmqaTpLNtjvN4sEmUTbsEgUQwJbvRQLeobs8fbJxNcw"
+				"bzz-raw://db6277338f4811f84e3f1891056bfad78e8c22b9c68cf276d3bcba923bfdcbca",
+				"dweb:/ipfs/QmWnevqxwNkiChhVmHPDJ1cN5kbGdAHvWzpcLC7hvdsjdT"
 			]
 		}
 	},

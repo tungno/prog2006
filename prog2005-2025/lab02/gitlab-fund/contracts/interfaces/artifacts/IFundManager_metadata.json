@@ -29,6 +29,19 @@
 				"inputs": [
 					{
 						"indexed": true,
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "BountyCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
 						"internalType": "address",
 						"name": "funder",
 						"type": "address"
@@ -91,6 +104,40 @@
 				"name": "depositFunds",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "issueId",
+						"type": "uint256"
+					}
+				],
+				"name": "getBountyDetails",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "funder",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "createdAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -183,11 +230,11 @@
 	},
 	"sources": {
 		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IFundManager.sol": {
-			"keccak256": "0x3e5a4229565198f147cfe18eef8e83250491795b14ac418f4344bc6f9c967f72",
+			"keccak256": "0xf8b034a035fe3daa422ec45f010f37aa03aa998af6acf62ad3da8a4856234734",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://da32d8961d0fca33b0a7a4923619c1775a1f5113723a4ce118ce2ea71085e68e",
-				"dweb:/ipfs/QmURrxtZxxUynVHz4hLiNQK3M2Qcd6XsiqqV1Fs7jtG9FX"
+				"bzz-raw://178f5f862580d1a947b5cb1b3d6c2796a164d59fdb6dcfb0e1c4cf1a83a7bdcc",
+				"dweb:/ipfs/QmY8pP3MQ9VjfzhpKAToGwcg49Kg9yCcJz9WAT6arddBAn"
 			]
 		}
 	},

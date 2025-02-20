@@ -9,7 +9,7 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_fundManager",
+						"name": "_fundManagerAddr",
 						"type": "address"
 					},
 					{
@@ -131,25 +131,6 @@
 						"type": "uint256"
 					}
 				],
-				"name": "claimTimestamps",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
 				"name": "claims",
 				"outputs": [
 					{
@@ -171,6 +152,11 @@
 						"internalType": "bool",
 						"name": "paid",
 						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -181,7 +167,7 @@
 				"name": "fundManager",
 				"outputs": [
 					{
-						"internalType": "contract IFundManager",
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -219,19 +205,13 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "issueId",
-						"type": "uint256"
-					}
-				],
-				"name": "isClaimExpired",
+				"inputs": [],
+				"name": "owner",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"internalType": "address",
 						"name": "",
-						"type": "bool"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -246,6 +226,19 @@
 					}
 				],
 				"name": "processPayout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_newValidator",
+						"type": "address"
+					}
+				],
+				"name": "updateValidator",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -270,46 +263,7 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {
-				"cancelClaim(uint256)": {
-					"details": "Cancel a claim (can be called by the original claimer or automatically after timeout)",
-					"params": {
-						"issueId": "The GitLab issue ID"
-					}
-				},
-				"claimBounty(uint256)": {
-					"details": "Developer claims a bounty for an issue",
-					"params": {
-						"issueId": "The GitLab issue ID"
-					}
-				},
-				"getClaimStatus(uint256)": {
-					"details": "Get the current status of a claim",
-					"params": {
-						"issueId": "The GitLab issue ID"
-					},
-					"returns": {
-						"amount": "The bounty amount",
-						"claimed": "Whether the bounty has been claimed",
-						"developer": "The address of the developer who claimed"
-					}
-				},
-				"isClaimExpired(uint256)": {
-					"details": "Check if a claim has expired",
-					"params": {
-						"issueId": "The GitLab issue ID"
-					},
-					"returns": {
-						"_0": "bool Whether the claim has expired"
-					}
-				},
-				"processPayout(uint256)": {
-					"details": "Process payout for a claimed bounty after validator approval",
-					"params": {
-						"issueId": "The GitLab issue ID"
-					}
-				}
-			},
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
@@ -335,43 +289,43 @@
 	},
 	"sources": {
 		"prog2005-2025/lab02/gitlab-fund/contracts/DeveloperPayouts.sol": {
-			"keccak256": "0xdbd27a1f86e009ed3ddf19b4798ae027b5bcd5726d01bc9124a77c3b31c1b690",
+			"keccak256": "0x0befb42edcfab183ec667e14d4f83a9308c90eede94a2d43751ec95b565d220a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6eed27aec92bb34331a6b4dc03d2037b25bd4d015b6cad010162d49df29347e7",
-				"dweb:/ipfs/QmbZchB4RCxnheKLBsP1aRtP9riw2uRLYuYM8yFsi4xvCV"
+				"bzz-raw://1bc545598dd5fc3ae5b85f678ec325987f8c27686dead9fd4442d35fd47dfb6a",
+				"dweb:/ipfs/QmZa1yrXSuCTKsK3uqJEaroDYN6abgq5j4b7417dQ4d9mQ"
 			]
 		},
 		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IDeveloperPayouts.sol": {
-			"keccak256": "0xafb64f121d01507729cd8bac5a59915ce1ea01b8d1bf7efc2bd17878591e23ad",
+			"keccak256": "0x9f601cdc5aa887367762f0f9282e07d309bc1c91b2c5e74ced3098977c1fcb58",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://175ef38934a8ac3d137ed21f944fa71ef4430060baa769eaae0520d83f866737",
-				"dweb:/ipfs/QmYDHx4pzAsY6hSrmXPzQS41jkJSE9JZSA3RPTwzMXKvH1"
+				"bzz-raw://4af0c7a6a28755af86da87e5835ef63c265572a7c962c83a0860ee0d05fd11b0",
+				"dweb:/ipfs/QmZBuWokkLAHiUMTsAEVLwwub4mi9ba55qLXuvcDJ3XYcD"
 			]
 		},
 		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IFundManager.sol": {
-			"keccak256": "0x3e5a4229565198f147cfe18eef8e83250491795b14ac418f4344bc6f9c967f72",
+			"keccak256": "0xf8b034a035fe3daa422ec45f010f37aa03aa998af6acf62ad3da8a4856234734",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://da32d8961d0fca33b0a7a4923619c1775a1f5113723a4ce118ce2ea71085e68e",
-				"dweb:/ipfs/QmURrxtZxxUynVHz4hLiNQK3M2Qcd6XsiqqV1Fs7jtG9FX"
+				"bzz-raw://178f5f862580d1a947b5cb1b3d6c2796a164d59fdb6dcfb0e1c4cf1a83a7bdcc",
+				"dweb:/ipfs/QmY8pP3MQ9VjfzhpKAToGwcg49Kg9yCcJz9WAT6arddBAn"
 			]
 		},
 		"prog2005-2025/lab02/gitlab-fund/contracts/interfaces/IValidatorMultiSig.sol": {
-			"keccak256": "0xe6a2cff08457ffb57b2a36ee8d7c81f6fb6eeeae8a55492e70b535a658ca2dc1",
+			"keccak256": "0x150830cb730b27ff8b2fd12540e1f84b120df5c754839375a7fb8b8a159d3dc1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://daf781f4febf8a573738526d0be656910924010d159cfcda23d7eec97028c198",
-				"dweb:/ipfs/QmcfmqaTpLNtjvN4sEmUTbsEgUQwJbvRQLeobs8fbJxNcw"
+				"bzz-raw://db6277338f4811f84e3f1891056bfad78e8c22b9c68cf276d3bcba923bfdcbca",
+				"dweb:/ipfs/QmWnevqxwNkiChhVmHPDJ1cN5kbGdAHvWzpcLC7hvdsjdT"
 			]
 		},
 		"prog2005-2025/lab02/gitlab-fund/contracts/libraries/SecurityUtils.sol": {
-			"keccak256": "0x00f9ee3be304f9aa373da8a628b843c661f9c1584a8a6af06a8fa3eb43adc410",
+			"keccak256": "0xe47476793072940791ae7297bba58ea2590f9738335fb17319e0149fb7df75be",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://fb78fac247cb575b7c3ebb9f2fb66d2ed47a2f37067e77a4b3de5904b24a751d",
-				"dweb:/ipfs/QmcB3tbmkURfMRGEooUzaN2rqKFLvCNDv7VRMANTEVtS24"
+				"bzz-raw://29b0d6b5495ffbae557e0b9f3a1c00e7cfeb44aad942786bb868028a9223ab2b",
+				"dweb:/ipfs/QmVoUPEehWN6v5hADyLiyXY8ia5V2uHSmhVbLPBojZmeWr"
 			]
 		}
 	},

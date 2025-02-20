@@ -75,20 +75,26 @@
 					"type": "address"
 				}
 			],
-			"name": "PayoutApproved",
+			"name": "ApprovalRevoked",
 			"type": "event"
 		},
 		{
 			"anonymous": false,
 			"inputs": [
 				{
-					"indexed": false,
+					"indexed": true,
 					"internalType": "uint256",
-					"name": "newThreshold",
+					"name": "issueId",
 					"type": "uint256"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "developer",
+					"type": "address"
 				}
 			],
-			"name": "ThresholdChanged",
+			"name": "PayoutApproved",
 			"type": "event"
 		},
 		{

@@ -1,44 +1,55 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
-
+import "./interfaces/IFundManager.sol"; 
 import "./interfaces/IValidatorMultiSig.sol";
+import "./interfaces/IDeveloperPayouts.sol";
 import "./libraries/SecurityUtils.sol";
 
+/**
+ * @title ValidatorMultiSig
+ * @notice Implements n-out-of-m multisignature validation for bounty payouts
+ * @dev Ensures secure validation process with multiple required approvals
+ */
 contract ValidatorMultiSig is IValidatorMultiSig {
     using SecurityUtils for SecurityUtils.NonReentrantContext;
 
     SecurityUtils.NonReentrantContext private _reentrancyContext;
 
-    // Array of validator addresses
-    address[] public validators;
+    // Contract references
+    IDeveloperPayouts public immutable developerPayouts;
     
-    // Required number of approvals
+    // Validator data structures
+    address[] public validators;
     uint256 public threshold;
     
-    // Mapping to track validator status
+    // Mappings for tracking validator status and approvals
     mapping(address => bool) public isValidator;
-    
-    // Mapping to track approvals: issueId => developer => validator => approved
     mapping(uint256 => mapping(address => mapping(address => bool))) public approvals;
-    
-    // Mapping to track approval counts: issueId => developer => count
     mapping(uint256 => mapping(address => uint256)) public approvalCounts;
+    mapping(address => uint256) public validatorActivityCount;
 
-    constructor(address[] memory _validators, uint256 _threshold) {
+    modifier onlyValidator() {
+        require(isValidator[msg.sender], "Not a validator");
+        _;
+    }
+
+    constructor(
+        address[] memory _validators, 
+        uint256 _threshold,
+        address _developerPayouts
+    ) {
         require(_validators.length >= _threshold, "Threshold too high");
         require(_threshold > 0, "Threshold too low");
         require(SecurityUtils.validateAddresses(_validators), "Invalid validators");
+        require(_developerPayouts != address(0), "Invalid developer payouts address");
+
+        developerPayouts = IDeveloperPayouts(_developerPayouts);
 
         for (uint i = 0; i < _validators.length; i++) {
             validators.push(_validators[i]);
             isValidator[_validators[i]] = true;
         }
         threshold = _threshold;
-    }
-
-    modifier onlyValidator() {
-        require(isValidator[msg.sender], "Not a validator");
-        _;
     }
 
     function addValidator(address validator) external override onlyValidator {
@@ -67,20 +78,36 @@ contract ValidatorMultiSig is IValidatorMultiSig {
         emit ValidatorRemoved(validator);
     }
 
-    function approvePayment(uint256 issueId, address developer) external override onlyValidator {
+     function approvePayment(uint256 issueId, address developer) external override onlyValidator {
+        // Verify claim exists and is valid
+        (bool claimed, address claimDeveloper, uint256 amount) = developerPayouts.getClaimStatus(issueId);
+        require(claimed, "No claim exists for this issue");
+        require(claimDeveloper == developer, "Developer address doesn't match claim");
+        require(amount > 0, "Invalid claim amount");
+
+        // Check if bounty exists and is active in FundManager
+        (uint256 bountyAmount,,,bool active) = IFundManager(developerPayouts.fundManager()).getBountyDetails(issueId);
+        require(bountyAmount > 0 && active, "Invalid or inactive bounty");
+
+        // Check double approval
         require(!approvals[issueId][developer][msg.sender], "Already approved");
 
+        // Record approval
         approvals[issueId][developer][msg.sender] = true;
         approvalCounts[issueId][developer]++;
+        validatorActivityCount[msg.sender]++;
 
         emit PayoutApproved(issueId, developer);
     }
 
     function revokeApproval(uint256 issueId, address developer) external override onlyValidator {
-        require(approvals[issueId][developer][msg.sender], "Not approved");
-
+        require(approvals[issueId][developer][msg.sender], "Not previously approved");
+        
         approvals[issueId][developer][msg.sender] = false;
         approvalCounts[issueId][developer]--;
+        validatorActivityCount[msg.sender]--;
+
+        emit ApprovalRevoked(issueId, developer);
     }
 
     function isApproved(uint256 issueId, address developer) external view override returns (bool) {
@@ -93,5 +120,12 @@ contract ValidatorMultiSig is IValidatorMultiSig {
 
     function getValidators() external view override returns (address[] memory) {
         return validators;
+    }
+
+    function getValidatorStatus(address validator) external view returns (
+        bool isActive,
+        uint256 totalApprovals
+    ) {
+        return (isValidator[validator], validatorActivityCount[validator]);
     }
 }
